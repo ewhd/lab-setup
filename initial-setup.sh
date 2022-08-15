@@ -37,5 +37,5 @@ apt install tmux
 # Install Zsh
 apt install zsh
 
-
-
+# Install stow
+apt install stow
