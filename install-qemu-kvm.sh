@@ -15,8 +15,8 @@ apt update
 apt install qemu-kvm -y
 
 # libvirt
-apt install libvirt-clients libvirt-daemon-system virtinst
-apt install libguestfs-tools # to edit or modify guest VM's disks and filesystems
+apt install libvirt-clients libvirt-daemon-system virtinst -y
+apt install libguestfs-tools -y # to edit or modify guest VM's disks and filesystems
 
 # add user to appropriate groups
 current_user=$(logname)
@@ -40,4 +40,10 @@ chmod 666 /dev/kvm
 chmod 666 /var/run/libvirt/libvirt-sock
 
 # Install virt-manager
-apt install virt-manager
+apt install virt-manager -y
+
+# Format history
+echo 'HISTTIMEFORMAT="%Y-%m-%d %T    "' >> ~/.bashrc
+
+# Install htop
+apt install htop -y

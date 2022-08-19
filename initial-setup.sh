@@ -21,7 +21,7 @@ ufw allow ssh
 systemctl enable ssh
 
 # Install xrdp
-apt install xrdp
+apt install xrdp -y
 systemctl enable --now xrdp
 ufw allow from any to any port 3389 proto tcp
 
@@ -32,14 +32,30 @@ curl --version >> ~/Downloads/deployerlog.txt
 # Install gnome-tweaks
 apt install gnome-tweaks
 
-# Install VS Code
-apt install software-properties-common apt-transport-https wget -y
-# this next line needed some modification/updating: https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html
-# wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | tee /usr/share/keyrings/microsoft-archive-keyr
-ing.gpg
-add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-apt install code -y
-code --version >> ~/Downloads/deployerlog.txt 
+# Set dark mode as default ()
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+
+# Auto-open gnome-terminal upon login
+echo "[Desktop Entry]
+Type=Application
+Exec=gnome-terminal
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_NG]=Terminal
+Name=Terminal
+Comment[en_NG]=Start Terminal On Startup
+Comment=Start Terminal On Startup" >> ~/.config/autostart/gnome-terminal.desktop
+
+# Install the locate command
+apt install plocate -y
+
+# Install xdg-utils
+apt install xdg-utils -y
 
 
+# Install vim-gtk (which has things like the +clipboard feature, which just vim doesn't for some reason)
+apt install vim-gtk -y
+
+# Install ranger terminal file manager
+apt install ranger -y
