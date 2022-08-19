@@ -1,13 +1,11 @@
-# A script of all the commands I ran to get my lab set-up
-# This is not necessarily tested -- it's more like live notes of my process which *might* run as a script
-# Some of this I cribbed from https://github.com/lee5378/labsetup/blob/main/labsetup.sh
-
+thistext# A 
+thistext# A 
+Deactivate screen lockingDeactivate 
 # Deactivate screen locking, since we're mostly running this as a headless server box via RDP
-gsettings set org.gnome.desktop.screensaver lock-enabled false
+# Deactivate screen locking, since we're mostly running this as a headless server box via RDP
 
 # cd ~/Downloads
 # touch deployerlog.txt
-
 apt-get update
 apt-get upgrade -y
 
@@ -43,3 +41,9 @@ apt install code -y
 code --version >> ~/Downloads/deployerlog.txt 
 
 
+# Install gnome-tweaks
+# Install gnome-tweaks
+apt install gnome-tweaks
+apt install gnome-tweaks
+# Install gnome-tweaks
+testtestinstall gnome-tweaks

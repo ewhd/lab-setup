@@ -1,0 +1,22 @@
+# Let NetworkManager manage all devices on this system
+# network:
+#   version: 2
+#   renderer: NetworkManager
+
+# ://www.answertopia.com/ubuntu/creating-an-ubuntu-kvm-networked-bridge-interface/  
+
+
+# Let networkd-systemd manage all device son this system
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eno1:
+      dhcp4: true
+    enp11s0f1:
+      dhcp4: true
+
+  bridges:
+    virbr1:
+      interfaces: [ enp11s0f1 ]
+      dhcp4: yes
