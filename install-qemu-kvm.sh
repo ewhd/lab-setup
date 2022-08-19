@@ -28,17 +28,6 @@ usermod -aG libvirt-qemu $current_user
 virsh net-start default
 virsh net-autostart default
 
-
-# virt-install command to set up a new VM was failing, and I believe this is the solution:
-# hhttps://serverfault.com/a/1002063
-# From https://serverfault.com/questions/1002043/libvirt-has-no-kvm-capabilities-even-though-qemu-kvm-works
-chmod 666 /dev/kvm
-
-# Despite adding users to groups above, I still couldn't use virt-install, virt-manager, etc. without sudo, 
-# but by following the error log of virt-manager I found the problem was accessing /var/run/libvirt/libvirt-sock,
-# so I changed the permissions. Hope that's not a problem?
-chmod 666 /var/run/libvirt/libvirt-sock
-
 # Install virt-manager
 apt install virt-manager -y
 

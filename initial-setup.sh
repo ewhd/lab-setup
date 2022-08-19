@@ -1,12 +1,9 @@
 # A script of all the commands I ran to get my lab set-up
-# This is not necessarily tested -- it's more like live notes of my process which *might* run as a script
+# This is not a finished product -- it's more like live notes of my process which *might* run as a script
 # Some of this I cribbed from https://github.com/lee5378/labsetup/blob/main/labsetup.sh
 
-# Deactivate screen locking, since we're mostly running this as a headless server box via RDP
+# Deactivate screen locking -- convenient if you're mostly running this as a headless server box via RDP
 gsettings set org.gnome.desktop.screensaver lock-enabled false
-
-# cd ~/Downloads
-# touch deployerlog.txt
 
 apt-get update
 apt-get upgrade -y
@@ -25,12 +22,8 @@ apt install xrdp -y
 systemctl enable --now xrdp
 ufw allow from any to any port 3389 proto tcp
 
-# Install curl
-apt install curl -y
-curl --version >> ~/Downloads/deployerlog.txt
-
 # Install gnome-tweaks
-apt install gnome-tweaks
+apt install gnome-tweaks -y
 
 # Set dark mode as default ()
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
@@ -59,3 +52,12 @@ apt install vim-gtk -y
 
 # Install ranger terminal file manager
 apt install ranger -y
+
+# Install Tmux
+apt install tmux -y
+
+# Install Zsh
+apt install zsh -y
+
+# Install stow
+apt install stow -y
