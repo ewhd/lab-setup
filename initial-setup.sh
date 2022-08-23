@@ -61,3 +61,6 @@ apt install zsh -y
 
 # Install stow
 apt install stow -y
+
+# Install htop
+apt install htop -y

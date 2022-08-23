@@ -33,6 +33,3 @@ apt install virt-manager -y
 
 # Format history
 echo 'HISTTIMEFORMAT="%Y-%m-%d %T    "' >> ~/.bashrc
-
-# Install htop
-apt install htop -y
