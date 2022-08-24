@@ -64,3 +64,6 @@ apt install stow -y
 
 # Install htop
 apt install htop -y
+
+# Install xsel
+apt install xsel -y
