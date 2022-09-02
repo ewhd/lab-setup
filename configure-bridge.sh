@@ -26,22 +26,20 @@ ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 # configure networks and bridges with Netplan
 
-## the Netplan YAML file we'll be using should be in the same dir as this
-## script, so to ensure we have its path (regardless of where this script is
-## or where we are running it from, I use the following:
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+## the Netplan YAML file we'll be using should be in a dir in the same dir as 
+## this script, so to ensure we have its path (regardless of where this script 
+## is or where we are running it from, I use the following:
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
+)/network_config/"
 # from: https://stackoverflow.com/a/246128
 
-## move to Netplan
-cd /etc/netplan
-
 ## make backup
-for f in *; do
-    cp "$f" "$f.orig"
+for f in /etc/netplan; do
+    mv "$f" "$f.orig"
 done
 
-## overwrite contents of YAML with my own
-cat $SCRIPT_DIR/custom-netplan-network-config.yaml > 01-network-manager-all.yaml
+## symlink all the files in my network_config dir to /etc/netplan
+ln -s $SCRIPT_DIR/* > /etc/netplan
 
 ## debug if necessary
 # netplan generate
